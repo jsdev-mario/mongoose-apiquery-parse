@@ -1,0 +1,24 @@
+{
+  "name": "mongoose-apiquery-parse",
+  "version": "1.0.0",
+  "description": "query parsing library for get method of restful api using mongoose",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w3ever/mongoose-apiquery-parse.git"
+  },
+  "keywords": [
+    "mongoose",
+    "query",
+    "api"
+  ],
+  "author": "w3ever",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/w3ever/mongoose-apiquery-parse/issues"
+  },
+  "homepage": "https://github.com/w3ever/mongoose-apiquery-parse#readme"
+}

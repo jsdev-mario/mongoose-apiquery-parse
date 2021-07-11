@@ -70,19 +70,25 @@ module.exports = (req_query) => {
     }
 
     // convert string id to mongoose id
-    const newQuery = {}
-    const convertToMongooseID = (data) => {
-        if(typeof data == "object") {
-            for(let [key, value] of Object.entries(data))
-                newQuery[key] = convertValueType(value)
-        }else {
-            if(mongoose.isValidObjectId(data)) 
-                return mongoose.Types.ObjectId(data);
-            return data;
+    const convertToMongooseID = (object) => {
+        if (Array.isArray(object)) {
+            return object.map(obj => {
+                return convertToMongooseID(obj)
+            })
+        }else if(typeof object == "object") {
+            const newObject = {}
+            for(let [key, value] of Object.entries(object)) {
+                if (typeof value === 'object' || Array.isArray(value)) 
+                    newObject[key] = convertToMongooseID(value)
+                else if(mongoose.isValidObjectId(value))
+                    newObject[key] = mongoose.Types.ObjectId(value);
+                else
+                    newObject[key] = value
+            }
+            return newObject;
         }
-    
     }
-    convertToMongooseID(query)
-
-    return {newQuery, sort_query, skip, limit}
+    const newQuery = convertToMongooseID(query);
+    
+    return {query: newQuery, sort_query, skip, limit}
 };

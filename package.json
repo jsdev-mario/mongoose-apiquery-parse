@@ -1,6 +1,6 @@
 {
   "name": "mongoose-apiquery-parse",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "query parsing library for get method of restful api using mongoose",
   "main": "index.js",
   "scripts": {

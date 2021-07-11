@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/w3ever/mongoose-apiquery-parse/issues"
   },
-  "homepage": "https://github.com/w3ever/mongoose-apiquery-parse#readme"
+  "homepage": "https://github.com/w3ever/mongoose-apiquery-parse#readme",
+  "dependencies": {
+    "mongoose": "^5.13.2"
+  }
 }

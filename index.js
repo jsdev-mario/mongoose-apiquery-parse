@@ -1,3 +1,4 @@
+const mongoose = require('mongoose')
 module.exports = (req_query) => {
 
     const query = {}
@@ -68,5 +69,20 @@ module.exports = (req_query) => {
         })
     }
 
-    return {query, sort_query, skip, limit}
+    // convert string id to mongoose id
+    const newQuery = {}
+    const convertToMongooseID = (data) => {
+        if(typeof data == "object") {
+            for(let [key, value] of Object.entries(data))
+                newQuery[key] = convertValueType(value)
+        }else {
+            if(mongoose.isValidObjectId(data)) 
+                return mongoose.Types.ObjectId(data);
+            return data;
+        }
+    
+    }
+    convertToMongooseID(query)
+
+    return {newQuery, sort_query, skip, limit}
 };
